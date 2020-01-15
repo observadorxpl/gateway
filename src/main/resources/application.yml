@@ -1,0 +1,44 @@
+server:
+   port: 8099
+
+eureka:
+  client:
+    #registerWithEureka: false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/ 
+
+zuul:
+  host:
+    connect-timeout-millis: 100000
+    socket-timeout-millis: 100000
+  routes:         
+    bancarios:
+      path: /micro-bancario/**
+      sensitive-headers:
+      url: http://localhost:8081/
+    creditos:
+      path: /micro-credito/**
+      sensitive-headers:
+      url: http://localhost:8082/
+    clientes:
+      path: /micro-clientes/**
+      sensitive-headers:
+      url: http://localhost:8083/
+    operacionesbancarias:
+      path: /micro-operacionesbancarias/**
+      sensitive-headers:
+      url: http://localhost:8084/
+    operacionescredito:
+      path: /micro-operacionescreditos/**
+      sensitive-headers:
+      url: http://localhost:8085/
+      
+    
+    
+    
+    
+    
+    
+  # localhost:8080/pacientes
+  # localhost:8099/micro-crud/pacientes
+    
