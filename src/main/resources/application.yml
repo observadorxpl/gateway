@@ -5,8 +5,11 @@ eureka:
   client:
     #registerWithEureka: false
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/ 
+      defaultZone: http://eureka-serverv1:8761/eureka/ 
 
+spring:
+  application:
+    name: servicio-zuul-server
 zuul:
   host:
     connect-timeout-millis: 100000
@@ -14,24 +17,19 @@ zuul:
   routes:         
     bancarios:
       path: /micro-bancario/**
-      sensitive-headers:
-      url: http://localhost:8081/
+      service-id: micro-bancario
     creditos:
       path: /micro-credito/**
-      sensitive-headers:
-      url: http://localhost:8082/
+      service-id: micro-credito
     clientes:
       path: /micro-clientes/**
-      sensitive-headers:
-      url: http://localhost:8083/
+      service-id: micro-clientes
     operacionesbancarias:
       path: /micro-operacionesbancarias/**
-      sensitive-headers:
-      url: http://localhost:8084/
+      service-id: micro-operacionesbancarias
     operacionescredito:
       path: /micro-operacionescreditos/**
-      sensitive-headers:
-      url: http://localhost:8085/
+      service-id: micro-operacionescreditos
       
     
     
